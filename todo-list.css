@@ -1,3 +1,134 @@
-.test{
-    margin: 100px;
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 100px;
+    font-weight: 200;
+    text-align: center;
+    color: rgba(175, 47, 47, 0.15);
+}
+
+input {
+    outline: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover, a:visited, a:link, a:active {
+    color: #000;
+}
+
+.todo-list {
+    min-width: 230px;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.wrap {
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+                0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.content-item, input, footer {
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 24px;
+    padding: 16px 60px;
+    border: none;
+    box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.03);
+    color: #4d4d4d;
+    font-weight: 300;
+    vertical-align: middle;
+    position: relative;
+}
+
+.content-item:hover .todo-delete-btn {
+    display: inline-block;
+}
+
+.check-box {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
+    background-size: 100% 100%;
+    background-position: 0 0;
+    position: absolute;
+    left: 8px;
+}
+
+.check-box-checked {
+    background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+}
+
+.todo-text, .todo-delete-btn {
+    vertical-align: middle;
+}
+
+.todo-delete-btn {
+    display: none;
+    width: 30px;
+    height: 30px;
+    transform: rotateZ(45deg);
+    position: absolute;
+    right: 15px;
+}
+
+.todo-delete-btn::before, .todo-delete-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    border-top: 2px solid #bdbdbd;
+    transform: translate(-50%, -50%);
+}
+
+.todo-delete-btn::after {
+    transform: translate(-50%, -50%) rotateZ(90deg);
+}
+
+.footer {
+    padding: 4px 60px 6px;
+    text-align: center;
+    box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.03),
+    0 1px 1px rgba(0, 0, 0, 0.2), 
+    0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2),
+    0 16px 0 -6px #f6f6f6,
+    0 17px 1px -6px rgba(0, 0, 0, 0.2);
+
+    position: relative;
+} 
+
+.filter-btn {
+    color: #bdbdbd;
+    font-size: 12px;
+    display: inline-block;
+    margin: 0 4px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    padding: 3px 8px;
+    border-radius: 8px;
 }
