@@ -1,15 +1,51 @@
-new Vue({
-    el: '#vue-todo-list',
+const filterFn = {
+    nodone: function (data) {
+        return data.filter((item) => {
+            return !item.done
+        });
+    },
+    all: function (data) {
+        return data;
+    },
+    done: function (data) {
+        return data.filter((item) => {
+            return item.done
+        });
+    }
+}
+
+var APP = new Vue({
     data: function data() {
         return {
             title: 'todo',
             todoList: [
-                'todo1',
-                'todo3',
-                'todo2',
-                'todo4'
+                {
+                    done: true,
+                    text: '增加删除啊'
+                },
+                {
+                    done: false,
+                    text: '写demo啊'
+                },
+                {
+                    done: false,
+                    text: '写样式啊'
+                },
+                {
+                    done: false,
+                    text: '抽象组件啊'
+                },
+                {
+                    done: false,
+                    text: '筛选功能啊'
+                },
+                {
+                    done: false,
+                    text: '存储数据啊'
+                },
             ],
-            todoVal: ''
+            todoVal: '',
+            filterCatelog: 'all'
         }
     },
     methods: {
@@ -22,8 +58,45 @@ new Vue({
             if (!_this.todoVal) {
                 return;
             }
-            this.todoList.push(_this.todoVal);
+
+            this.todoList.push({
+                done: false,
+                text: _this.todoVal
+            });
             this.todoVal = '';
+        },
+        clearInput: function (e) {
+            console.log(123);
+            e.target.blur();
+            this.todoVal = '';
+        },
+        filterDoneFun: function () {
+            
+        }
+    },
+    watch: {
+        filterNoDone: function (val) {
+            
+        }
+    },
+    computed: {
+        filterTodoList: function () {
+            console.log(filterFn[this.filterCatelog](this.todoList));
+            return filterFn[this.filterCatelog](this.todoList);
         }
     },
 });
+
+function hashChangeFun () {
+    let catelog = window.location.hash.replace(/#\/?/, '');
+    console.log('-----------catelog', catelog);
+    if (!filterFn[catelog]) {
+        return;
+    }
+    APP.filterCatelog = catelog;
+}
+
+window.addEventListener('hashchange', hashChangeFun);
+hashChangeFun();
+
+APP.$mount('#vue-todo-list');

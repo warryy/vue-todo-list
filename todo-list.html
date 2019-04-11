@@ -4,26 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link src="./todo-list.css"/>
+  <title>vue-todo-list</title>
+  <link src="./todo-list.css" />
 </head>
+
 <body>
-  <div id='vue-todo-list'>
+  <section id='vue-todo-list'>
     <section class="title">{{title}}</section>
     <section>
-      <input type="text" v-model="todoVal" v-on:keyup.enter="addItem" >
+      <input type="text" v-model="todoVal" @keyup.enter="addItem" @keyup.esc="clearInput">
     </section>
     <section>
       <ul>
-        <li v-for="(todoItem, todoIndex) in todoList" :key="todoIndex">
-          <span>{{todoItem}}</span>
+        <li v-for="(todoItem, todoIndex) in filterTodoList" :key="todoIndex">
+          <input type="checkbox" v-model="todoItem.done">
+          <span>{{todoItem.text}}</span>
           <span @click="deleteItem" :data-idx="todoIndex">X</span>
         </li>
       </ul>
     </section>
-  </div>
+    <section>
+
+        <a href="#/nodone">未完成</a>
+        <a href="#/done">已完成</a>
+        <a href="#/all">全部</a>
+
+    </section>
+  </section>
 </body>
 <!-- <script src="./vue.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="./todo-list.js"></script>
+
 </html>
