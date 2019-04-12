@@ -14,8 +14,7 @@
     <h1 class="title">{{title}}</h1>
     <section class="wrap">
         <section class="content">
-            <input class="input" type="text" v-model="todoVal" @keyup.enter="addItem" @keyup.esc="clearInput">
-      
+            <input placeholder="what needs to be done?" class="input" type="text" v-model="todoVal" @keyup.enter="addItem" @keyup.esc="clearInput">
             <ul>
               <li class="content-item" v-for="(todoItem, todoIndex) in filterTodoList" :key="todoIndex">
                 <span @click="todoItem.done = !todoItem.done" class="check-box"
@@ -31,7 +30,6 @@
             <a class="filter-btn" href="#/all">全部</a>
           </footer>
     </section>
-    
   </section>
 </body>
 <!-- <script src="./vue.js"></script> -->

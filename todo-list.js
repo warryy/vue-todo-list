@@ -20,6 +20,10 @@ var APP = new Vue({
             title: 'todo',
             todoList: [
                 {
+                    done: false,
+                    text: '这一行的文字很长这一行的文字很长这一行的文字很长这一行的文字很长这一行的文字很长'
+                },
+                {
                     done: true,
                     text: '增加删除啊'
                 },

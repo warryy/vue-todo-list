@@ -1,3 +1,5 @@
+/* s 统一样式修改 */
+
 body {
     margin: 0;
     background-color: #f5f5f5;
@@ -17,6 +19,12 @@ input {
     outline: none;
 }
 
+::-webkit-input-placeholder{
+    color: #ccc;
+    font-weight: 200;
+    font-style: italic;
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -34,6 +42,8 @@ a:hover, a:visited, a:link, a:active {
     color: #000;
 }
 
+/* e 统一样式修改 */
+
 .todo-list {
     min-width: 230px;
     max-width: 550px;
@@ -42,8 +52,7 @@ a:hover, a:visited, a:link, a:active {
 
 .wrap {
     background-color: #fff;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-                0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
 .content-item, input, footer {
@@ -112,15 +121,9 @@ a:hover, a:visited, a:link, a:active {
 .footer {
     padding: 4px 60px 6px;
     text-align: center;
-    box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.03),
-    0 1px 1px rgba(0, 0, 0, 0.2), 
-    0 8px 0 -3px #f6f6f6,
-    0 9px 1px -3px rgba(0, 0, 0, 0.2),
-    0 16px 0 -6px #f6f6f6,
-    0 17px 1px -6px rgba(0, 0, 0, 0.2);
-
+    box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.03), 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 1px -6px rgba(0, 0, 0, 0.2);
     position: relative;
-} 
+}
 
 .filter-btn {
     color: #bdbdbd;
