@@ -1,3 +1,19 @@
+const VUETODOLIST = 'vuetodolist';
+
+const todoStorage = {
+    fetch: function () {
+        let _todos = JSON.parse(localStorage.getItem(VUETODOLIST));
+        if (!_todos) {
+            _todos = [];
+        }
+        return _todos;
+    },
+    save: function (todos) {
+        console.log(todos)
+        localStorage.setItem(VUETODOLIST, JSON.stringify(todos));
+    }
+}
+
 const filterFn = {
     nodone: function (data) {
         return data.filter((item) => {
@@ -20,36 +36,7 @@ var APP = new Vue({
             title: 'todo',
             // 是否点击了全部完成按钮
             // allDoneFlag: false,
-            todoList: [
-                {
-                    done: false,
-                    text: '这一行的文字很长这一行的文字很长这一行的文字很长这一行的文字很长这一行的文字很长'
-                },
-                {
-                    done: true,
-                    text: '增加删除啊'
-                },
-                {
-                    done: false,
-                    text: '写demo啊'
-                },
-                {
-                    done: false,
-                    text: '写样式啊'
-                },
-                {
-                    done: false,
-                    text: '抽象组件啊'
-                },
-                {
-                    done: false,
-                    text: '筛选功能啊'
-                },
-                {
-                    done: false,
-                    text: '存储数据啊'
-                },
-            ],
+            todoList: todoStorage.fetch(),
             todoVal: '',
             filterCatelog: 'all'
         }
@@ -94,17 +81,9 @@ var APP = new Vue({
         }
     },
     watch: {
-        // allDoneFlag: function (val) {
-        //     if (val) {
-        //         this.todoList.forEach(item => {
-        //             item.done = true;
-        //         });
-        //     } else {
-        //         this.todoList.forEach(item => {
-        //             item.done = false;
-        //         });
-        //     }
-        // }
+       todoList: function (val) {
+           todoStorage.save(val);
+       }
     },
     computed: {
         filterTodoList: function () {

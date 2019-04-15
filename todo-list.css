@@ -43,6 +43,9 @@ a:hover, a:visited, a:link, a:active {
 }
 
 /* e 统一样式修改 */
+[v-cloak]{
+    display: none;
+}
 
 .todo-list {
     min-width: 230px;
