@@ -19,7 +19,7 @@ var APP = new Vue({
         return {
             title: 'todo',
             // 是否点击了全部完成按钮
-            allDoneFlag: false,
+            // allDoneFlag: false,
             todoList: [
                 {
                     done: false,
@@ -76,34 +76,61 @@ var APP = new Vue({
             e.target.blur();
             this.todoVal = '';
         },
-        filterDoneFun: function () {
-            
-        }
-    },
-    watch: {
-        allDoneFlag: function (val) {
-            if (val) {
-                this.todoList.forEach(item => {
-                    item.done = true;
-                });
-            } else {
+        changeToAllDone: function () {
+            if (this.allDoneFlag) {
                 this.todoList.forEach(item => {
                     item.done = false;
                 });
+            } else {
+                this.todoList.forEach(item => {
+                    item.done = true;
+                });
             }
+        },
+        clearHasDone: function () {
+            this.todoList.forEach((item, idx, arr) => {
+                item.done && arr.splice(idx, 1);
+            });
         }
+    },
+    watch: {
+        // allDoneFlag: function (val) {
+        //     if (val) {
+        //         this.todoList.forEach(item => {
+        //             item.done = true;
+        //         });
+        //     } else {
+        //         this.todoList.forEach(item => {
+        //             item.done = false;
+        //         });
+        //     }
+        // }
     },
     computed: {
         filterTodoList: function () {
-            console.log(filterFn[this.filterCatelog](this.todoList));
             return filterFn[this.filterCatelog](this.todoList);
+        },
+        itemTips: function () {
+            let _len = this.todoList.filter(item => {
+                return !item.done;
+            }).length;
+            if (_len > 0) {
+                return _len + ' left';
+            } else {
+                return 'all done'
+            }
+        },
+        allDoneFlag: function () {
+            return filterFn['nodone'](this.todoList).length <= 0;
+        },
+        hasSomeItemDone: function () {
+            return filterFn['done'](this.todoList).length > 0;
         }
     },
 });
 
-function hashChangeFun () {
+function hashChangeFun() {
     let catelog = window.location.hash.replace(/#\/?/, '');
-    console.log('-----------catelog', catelog);
     if (!filterFn[catelog]) {
         return;
     }
@@ -111,6 +138,6 @@ function hashChangeFun () {
 }
 
 window.addEventListener('hashchange', hashChangeFun);
-hashChangeFun();
+// hashChangeFun();
 
 APP.$mount('#vue-todo-list');

@@ -15,7 +15,7 @@
     <section class="wrap">
       <section class="content">
         <div class="input-wrap">
-          <span @click="allDoneFlag = !allDoneFlag" class="all-done-btn" :class="{'all-done-btn-active': allDoneFlag}"></span>
+          <span v-show='todoList.length' @click="changeToAllDone" class="all-done-btn" :class="{'all-done-btn-active': allDoneFlag}"></span>
           <input placeholder="what needs to be done?" class="input" type="text" v-model="todoVal" @keyup.enter="addItem"
             @keyup.esc="clearInput">
         </div>
@@ -29,9 +29,11 @@
         </ul>
       </section>
       <footer class="footer">
-        <a class="filter-btn" href="#/nodone">未完成</a>
-        <a class="filter-btn" href="#/done">已完成</a>
-        <a class="filter-btn" href="#/all">全部</a>
+        <span class="item-tips">{{itemTips}}</span>
+        <a class="filter-btn" href="#/nodone" :class="{'filter-btn-active': filterCatelog == 'nodone'}">未完成</a>
+        <a class="filter-btn" href="#/done" :class="{'filter-btn-active': filterCatelog == 'done'}">已完成</a>
+        <a class="filter-btn" href="#/all" :class="{'filter-btn-active': filterCatelog == 'all'}">全部</a>
+        <span v-show="hasSomeItemDone" @click="clearHasDone" class="item-clear-btn">clear completed</span>
       </footer>
     </section>
   </section>
