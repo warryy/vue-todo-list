@@ -55,6 +55,30 @@ a:hover, a:visited, a:link, a:active {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
+.input-wrap{
+    position: relative;
+}
+
+.all-done-btn{
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-left: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    transform: translateY(-50%) rotateZ(-45deg);
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    z-index: 1;
+}
+
+.all-done-btn-active{
+    border-left: 2px solid #777;
+    border-bottom: 2px solid #777;
+}
+
 .content-item, input, footer {
     margin: 0;
     width: 100%;

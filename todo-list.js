@@ -18,6 +18,8 @@ var APP = new Vue({
     data: function data() {
         return {
             title: 'todo',
+            // 是否点击了全部完成按钮
+            allDoneFlag: false,
             todoList: [
                 {
                     done: false,
@@ -79,8 +81,16 @@ var APP = new Vue({
         }
     },
     watch: {
-        filterNoDone: function (val) {
-            
+        allDoneFlag: function (val) {
+            if (val) {
+                this.todoList.forEach(item => {
+                    item.done = true;
+                });
+            } else {
+                this.todoList.forEach(item => {
+                    item.done = false;
+                });
+            }
         }
     },
     computed: {
