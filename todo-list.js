@@ -9,7 +9,6 @@ const todoStorage = {
         return _todos;
     },
     save: function (todos) {
-        console.log(todos)
         localStorage.setItem(VUETODOLIST, JSON.stringify(todos));
     }
 }
@@ -81,8 +80,14 @@ var APP = new Vue({
         }
     },
     watch: {
-       todoList: function (val) {
-           todoStorage.save(val);
+       todoList: {
+        handler(newList) {
+           todoStorage.save(newList);
+        },
+        // 是否在监听函数最初绑定的时候就执行
+        immediate: false,
+        // 是否深度监听，慎用
+        deep: true
        }
     },
     computed: {
@@ -117,6 +122,5 @@ function hashChangeFun() {
 }
 
 window.addEventListener('hashchange', hashChangeFun);
-// hashChangeFun();
 
 APP.$mount('#vue-todo-list');

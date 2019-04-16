@@ -19,7 +19,7 @@ input {
     outline: none;
 }
 
-::-webkit-input-placeholder{
+::-webkit-input-placeholder {
     color: #ccc;
     font-weight: 200;
     font-style: italic;
@@ -43,7 +43,8 @@ a:hover, a:visited, a:link, a:active {
 }
 
 /* e 统一样式修改 */
-[v-cloak]{
+
+[v-cloak] {
     display: none;
 }
 
@@ -58,11 +59,11 @@ a:hover, a:visited, a:link, a:active {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-.input-wrap{
+.input-wrap {
     position: relative;
 }
 
-.all-done-btn{
+.all-done-btn {
     display: block;
     width: 15px;
     height: 15px;
@@ -70,16 +71,20 @@ a:hover, a:visited, a:link, a:active {
     border-bottom: 2px solid #ccc;
     transform: translateY(-50%) rotateZ(-45deg);
     cursor: pointer;
-
     position: absolute;
     top: 50%;
     left: 20px;
     z-index: 1;
+    transition: all 0.5s cubic-bezier(0, 0, 0, 1);
 }
 
-.all-done-btn-active{
+.all-done-btn-active {
     border-left: 2px solid #777;
     border-bottom: 2px solid #777;
+}
+
+.item-list-ul {
+    /* transition: height 0.3s ease-out; */
 }
 
 .content-item, input, footer {
@@ -94,6 +99,10 @@ a:hover, a:visited, a:link, a:active {
     font-weight: 300;
     vertical-align: middle;
     position: relative;
+}
+
+.content-item {
+    cursor: pointer;
 }
 
 .content-item:hover .todo-delete-btn {
@@ -121,6 +130,12 @@ a:hover, a:visited, a:link, a:active {
 
 .todo-text, .todo-delete-btn {
     vertical-align: middle;
+    transition: all 0.3s ease-out;
+}
+
+.todo-text-done {
+    text-decoration: line-through;
+    color: #ccc;
 }
 
 .todo-delete-btn {
@@ -149,17 +164,15 @@ a:hover, a:visited, a:link, a:active {
 }
 
 .footer {
-    
     padding: 4px 60px 6px;
     text-align: center;
     box-shadow: 0 -2px 1px rgba(0, 0, 0, 0.03), 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 1px -6px rgba(0, 0, 0, 0.2);
     position: relative;
 }
 
-.item-tips{
+.item-tips {
     color: ccc;
     font-size: 16px;
-
     position: absolute;
     left: 20px;
     top: 50%;
@@ -177,7 +190,7 @@ a:hover, a:visited, a:link, a:active {
     border-radius: 8px;
 }
 
-.filter-btn:hover{
+.filter-btn:hover {
     border-color: #eee;
 }
 
@@ -188,13 +201,13 @@ a:hover, a:visited, a:link, a:active {
 .item-clear-btn {
     color: #ddd;
     font-size: 16px;
-
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
 }
-.item-clear-btn:hover{
+
+.item-clear-btn:hover {
     color: #bbb;
     cursor: pointer;
     text-decoration: underline;
