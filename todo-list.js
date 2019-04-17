@@ -37,7 +37,11 @@ var APP = new Vue({
             // allDoneFlag: false,
             todoList: todoStorage.fetch(),
             todoVal: '',
-            filterCatelog: 'all'
+            filterCatelog: 'all',
+            // 正在编辑的条目
+            editingItemIdx: -1,
+            // 正在编辑条目的旧值
+            oldTodoText: ''
         }
     },
     methods: {
@@ -77,18 +81,30 @@ var APP = new Vue({
             for (var i = this.todoList.length - 1; i >= 0; --i) {
                 this.todoList.splice(i, 1);
             }
+        },
+        modifyItem: function (i, t) {
+            this.editingItemIdx = i;
+            this.oldTodoText = t;
+        },
+        cancelModifyItem: function (obj) {
+            obj.text = this.oldTodoText;
+            this.oldTodoText = '';
+            this.editingItemIdx = -1;
+        },
+        confirmModify: function () {
+            this.editingItemIdx = -1;
         }
     },
     watch: {
-       todoList: {
-        handler(newList) {
-           todoStorage.save(newList);
-        },
-        // 是否在监听函数最初绑定的时候就执行
-        immediate: false,
-        // 是否深度监听，慎用
-        deep: true
-       }
+        todoList: {
+            handler(newList) {
+                todoStorage.save(newList);
+            },
+            // 是否在监听函数最初绑定的时候就执行
+            immediate: false,
+            // 是否深度监听，慎用
+            deep: true
+        }
     },
     computed: {
         filterTodoList: function () {
@@ -111,6 +127,14 @@ var APP = new Vue({
             return filterFn['done'](this.todoList).length > 0;
         }
     },
+    // 自定义指令
+    directives: {
+        'todo-focus': function (el, binding) {
+            if (binding.value) {
+                el.focus();
+            }
+        }
+    }
 });
 
 function hashChangeFun() {

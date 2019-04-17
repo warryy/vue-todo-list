@@ -87,7 +87,7 @@ a:hover, a:visited, a:link, a:active {
     /* transition: height 0.3s ease-out; */
 }
 
-.content-item, input, footer {
+.content-item, .input, footer {
     margin: 0;
     width: 100%;
     box-sizing: border-box;
@@ -107,6 +107,29 @@ a:hover, a:visited, a:link, a:active {
 
 .content-item:hover .todo-delete-btn {
     display: inline-block;
+}
+
+.content-item-input {
+    margin: 0;
+    width: calc(100% - 60px);
+    height: calc(100% - 2px);
+    box-sizing: border-box;
+    font-size: 24px;
+    padding: 16px 0;
+    border: none;
+    color: #4d4d4d;
+    font-weight: 300;
+    vertical-align: middle;
+    position: absolute;
+    left: 60px;
+    top: 0;
+    z-index: -1;
+}
+
+.content-item-input-active {
+    z-index: 1;
+    border: 1px solid #46a0f0;
+    box-shadow: inset 0 0 5px #46a0f0;
 }
 
 .check-box {
@@ -131,6 +154,11 @@ a:hover, a:visited, a:link, a:active {
 .todo-text, .todo-delete-btn {
     vertical-align: middle;
     transition: all 0.3s ease-out;
+}
+
+.todo-text {
+    display: inline-block;
+    width: 100%;
 }
 
 .todo-text-done {

@@ -23,8 +23,18 @@
           <li class="content-item" v-for="(todoItem, todoIndex) in filterTodoList" :key="todoIndex">
             <span @click="todoItem.done = !todoItem.done" class="check-box"
               v-bind:class="{'check-box-checked': todoItem.done}"></span>
-            <span class="todo-text" :class="{'todo-text-done': todoItem.done}">{{todoItem.text}}</span>
+
+            <span title="双击修改该项" @dblclick="modifyItem(todoIndex, todoItem.text)" class="todo-text" :class="{'todo-text-done': todoItem.done}">{{todoItem.text}}</span>
+
             <span class="todo-delete-btn" @click="deleteItem" :data-idx="todoIndex"></span>
+
+            <input type="text" class="content-item-input"
+            :class="{'content-item-input-active': todoIndex == editingItemIdx}" 
+            v-todo-focus="todoIndex == editingItemIdx"
+            @keyup.esc="cancelModifyItem(todoItem)"
+            @blur="confirmModify"
+            @keyup.enter="confirmModify"
+            v-model="todoItem.text" />
           </li>
         </ul>
       </section>
