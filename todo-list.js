@@ -55,7 +55,7 @@ var APP = new Vue({
                 return;
             }
 
-            this.todoList.push({
+            this.todoList.unshift({
                 done: false,
                 text: _this.todoVal
             });
