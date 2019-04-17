@@ -74,9 +74,9 @@ var APP = new Vue({
             }
         },
         clearHasDone: function () {
-            this.todoList.forEach((item, idx, arr) => {
-                item.done && arr.splice(idx, 1);
-            });
+            for (var i = this.todoList.length - 1; i >= 0; --i) {
+                this.todoList.splice(i, 1);
+            }
         }
     },
     watch: {
