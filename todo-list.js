@@ -81,7 +81,9 @@ var APP = new Vue({
         },
         clearHasDone: function () {
             for (var i = this.todoList.length - 1; i >= 0; --i) {
-                this.todoList.splice(i, 1);
+                if (this.todoList[i].done) {
+                    this.todoList.splice(i, 1);
+                }
             }
         },
         modifyItem: function (i, t) {
