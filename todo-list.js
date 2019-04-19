@@ -29,6 +29,8 @@ const filterFn = {
     }
 }
 
+Vue.config.devtools = true;
+
 var APP = new Vue({
     data: function data() {
         return {
