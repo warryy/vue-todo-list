@@ -7,7 +7,7 @@ const store = new Vuex.Store({
     state: {
         todoList: [{
             done: false,
-            todo: '哈哈哈啊'
+            text: '哈哈哈啊'
         }]
     },
     getters: {
@@ -22,7 +22,7 @@ const store = new Vuex.Store({
         addOneLine: state => {
             let _ = {
                 done: Math.random() < 0.5 ? true : false,
-                todo: '呜哈哈' + parseInt(Math.random() * 100)
+                text: '呜哈哈' + parseInt(Math.random() * 100)
             }
             state.todoList.push(_)
         },

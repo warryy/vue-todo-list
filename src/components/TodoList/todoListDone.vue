@@ -1,15 +1,18 @@
 <template>
   <section>
-    <ul>
-      <li v-for="(li, liIdx) in todoListDone" :key="li.todo + liIdx">{{liIdx + 1}}. {{li.todo}}</li>
-    </ul>
+    <todo-list :list="todoListDone"></todo-list>
   </section>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from "vuex"
+
+import TodoList from './TodoList'
 
 export default {
+  components: {
+    TodoList
+  },
   computed: {
     ...mapGetters(["todoListDone"])
   }

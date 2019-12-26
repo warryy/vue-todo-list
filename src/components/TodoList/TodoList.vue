@@ -1,27 +1,18 @@
 <template>
-  <section>
-    <section>
-      <router-link to="/todo/all">all</router-link>
-      <br/>
-      <router-link to="/todo/done">done</router-link>
-    </section>
-
-    <section>
-      <router-view></router-view>
-    </section>
-  </section>
+  <ul>
+    <li v-for="(li, liIdx) in list" :key="liIdx + li.text">{{liIdx + 1}}. {{li.text}}</li>
+  </ul>
 </template>
 
 <script>
 export default {
-  name: "todolist",
-  data() {
-    return {
-      todoText: ""
-    };
+  props: {
+    list: {
+      type: Array,
+      default() {
+          return []
+      }
+    }
   }
 };
 </script>
-
-<style scoped>
-</style>

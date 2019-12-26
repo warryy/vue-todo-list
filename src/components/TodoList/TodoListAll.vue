@@ -2,18 +2,20 @@
   <section>
     <section>
       <button @click="addOneLine">add one line</button>
-      <button @click="removeOneLine">add one line</button>
+      <button @click="removeOneLine">remove one line</button>
     </section>
-    <ul>
-      <li v-for="(li, liIdx) in todoListAll" :key="li.todo + liIdx">{{liIdx + 1}}. {{li.todo}}</li>
-    </ul>
+    <section>
+      <todo-list :list="todoListAll"></todo-list>
+    </section>
   </section>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import TodoList from "./TodoList.vue";
 
 export default {
+  components: { TodoList },
   computed: {
     ...mapGetters(["todoListAll"])
   },

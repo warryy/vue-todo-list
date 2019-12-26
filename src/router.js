@@ -4,14 +4,14 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Index from './components/Index.vue'
-import TodoList from './components/TodoList/TodoList.vue'
+import TodoListIndex from './components/TodoList/TodoListIndex.vue'
 import TodoListAll from './components/TodoList/TodoListAll.vue'
-import TodoListDone from './components/TodoList/todoListDone.vue'
+import TodoListDone from './components/TodoList/TodoListDone.vue'
 
 const routes = [{
         path: '/todo',
         name: 'todolist',
-        component: TodoList,
+        component: TodoListIndex,
         children: [{
                 path: 'all',
                 component: TodoListAll
