@@ -1,12 +1,11 @@
 <template>
   <section>
-    <!-- <a-input-search placeholder="input search text" style="width: 200px" @search="onSearch" /> -->
     <section>
       <router-link to="/todo/all">all</router-link>
+      <br/>
+      <router-link to="/todo/done">done</router-link>
     </section>
-    <section>
-      <!-- <button @click="addOneLine">add one line</button> -->
-    </section>
+
     <section>
       <router-view></router-view>
     </section>
@@ -20,11 +19,6 @@ export default {
     return {
       todoText: ""
     };
-  },
-  methods: {
-    // addOneLine() {
-
-    // }
   }
 };
 </script>

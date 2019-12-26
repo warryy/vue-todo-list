@@ -1,23 +1,29 @@
 <template>
   <section>
-      <ul>
-          <li v-for="(li, liIdx) in list" :key="li + liIdx">{{liIdx + 1}}. {{li}}</li>
-      </ul>
+    <section>
+      <button @click="addOneLine">add one line</button>
+      <button @click="removeOneLine">add one line</button>
+    </section>
+    <ul>
+      <li v-for="(li, liIdx) in todoListAll" :key="li.todo + liIdx">{{liIdx + 1}}. {{li.todo}}</li>
+    </ul>
   </section>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  data() {
-    return {
-      list: [
-          '哈哈哈哈',
-          '哈哈哈哈',
-          '哈哈哈哈',
-          '哈哈哈哈',
-          '哈哈哈哈',
-      ]
-    };
+  computed: {
+    ...mapGetters(["todoListAll"])
+  },
+  methods: {
+    addOneLine() {
+      this.$store.commit("addOneLine");
+    },
+    removeOneLine() {
+      this.$store.commit("removeOneLine");
+    }
   }
 };
 </script>
