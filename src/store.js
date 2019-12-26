@@ -16,7 +16,10 @@ const store = new Vuex.Store({
         },
         todoListDone: state => {
             return state.todoList.filter(todo => todo.done)
-        }
+        },
+        todoListDoing: state => {
+            return state.todoList.filter(todo => !todo.done)
+        },
     },
     mutations: {
         addOneLine: state => {

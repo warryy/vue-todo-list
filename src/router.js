@@ -7,6 +7,7 @@ import Index from './components/Index.vue'
 import TodoListIndex from './components/TodoList/TodoListIndex.vue'
 import TodoListAll from './components/TodoList/TodoListAll.vue'
 import TodoListDone from './components/TodoList/TodoListDone.vue'
+import TodoListDoing from './components/TodoList/TodoListDoing.vue'
 
 const routes = [{
         path: '/todo',
@@ -19,6 +20,10 @@ const routes = [{
             {
                 path: 'done',
                 component: TodoListDone
+            },
+            {
+                path: 'doing',
+                component: TodoListDoing
             },
         ]
     },
