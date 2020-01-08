@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header class="header">
-      <span>VUE BUCKET</span>
+      <span>{{title}}</span>
     </header>
     <section class="content">
       <router-view></router-view>
@@ -10,22 +10,16 @@
 </template>
 
 <script>
-// import Vue from "vue";
-// import { Breadcrumb, Icon } from "ant-design-vue";
 
-// Vue.use(Breadcrumb);
-// Vue.use(Icon);
 
+const {log} = console;
+log()
 export default {
   name: "app",
   data() {
     return {
+      title: 'VUE BUCKET',
     };
-  },
-  methods: {
-    toggleCollapsed() {
-      this.collapsed = !this.collapsed;
-    }
   }
 };
 </script>
@@ -59,9 +53,4 @@ body {
 .header-nav:visited {
   opacity: 0.6;
 }
-
-.content {
-  margin: 15px;
-}
-
 </style>

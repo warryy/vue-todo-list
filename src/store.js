@@ -2,35 +2,49 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
 const store = new Vuex.Store({
     state: {
-        todoList: [{
-            done: false,
-            text: '哈哈哈啊'
-        }]
+        todoList: {}
     },
     getters: {
         todoListAll: state => {
-            return state.todoList;
+            let _todoList = state.todoList;
+            return _todoList;
         },
         todoListDone: state => {
-            return state.todoList.filter(todo => todo.done)
+            var _obj = {},
+                _todoList = state.todoList;
+            for (let attr in _todoList) {
+                _todoList[attr].done && (_obj[attr] = _todoList[attr])
+            }
+            return _obj;
         },
         todoListDoing: state => {
-            return state.todoList.filter(todo => !todo.done)
+            let _obj = {},
+                _todoList = state.todoList;
+            for (let attr in _todoList) {
+                !_todoList[attr].done && (_obj[attr] = _todoList[attr])
+            }
+            return _obj;
         },
     },
     mutations: {
-        addOneLine: state => {
+        addListItem: (state, text) => {
+            let r = Math.random();
             let _ = {
-                done: Math.random() < 0.5 ? true : false,
-                text: '呜哈哈' + parseInt(Math.random() * 100)
+                done: false,
+                text
             }
-            state.todoList.push(_)
+            Vue.set(state.todoList, parseInt(r * 1000000), _);
         },
-        removeOneLine: state => {
-            state.todoList.pop();
+        deleteListItem: (state, id) => {
+            Vue.delete(state.todoList, id);
+        },
+        toggleDone: (state, {
+            id,
+            done
+        }) => {
+            state.todoList[id].done = done;
         }
     }
 })

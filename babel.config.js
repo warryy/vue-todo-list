@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   presets: [
     '@vue/cli-plugin-babel/preset'
@@ -6,9 +8,9 @@ module.exports = {
     [
       "import",
       {
-        libraryName: 'ant-design-vue',
-        libraryDirectory: 'es', 
-        style: true
+        "libraryName": "vant",
+        "libraryDirectory": "es",
+        "style": true
       }
     ]
   ]
