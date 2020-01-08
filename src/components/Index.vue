@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h4>{{ msg }}</h4>
+    <h4><a href="/todo/all">{{ msg }}</a></h4>
   </div>
 </template>
 
